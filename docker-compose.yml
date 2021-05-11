@@ -4,6 +4,6 @@ services:
   chronodosePushover:
     build: .
     environment:
-      PUSHOVER_USER: somewordpress
-      PUSHOVER_TOKEN: wordpress
+      PUSHOVER_USER:
+      PUSHOVER_TOKEN:
     restart: always
