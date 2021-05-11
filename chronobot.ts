@@ -42,11 +42,11 @@ interface viteMaDoseData {
 }
 
 async function checkDepartment(department: number) {
-
     console.log(`fetching db ${department}...`);
     const {data}: { data: viteMaDoseData } =
         await axios.get(`https://vitemadose.gitlab.io/vitemadose/${department}.json`);
     console.log(`fetched db ${department}`);
+
 
     const promises = data.centres_disponibles
         .filter(centre => centre.appointment_schedules
@@ -81,6 +81,7 @@ async function checkDepartment(department: number) {
 
             console.log(message);
 
+            pushover.setPriority(2, 3600, 60)
             await pushover.send('Nouvelle Dose', message)
 
         });

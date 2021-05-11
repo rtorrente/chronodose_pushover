@@ -1,0 +1,9 @@
+version: "3.2"
+
+services:
+  chronodosePushover:
+    build: .
+    environment:
+      PUSHOVER_USER: somewordpress
+      PUSHOVER_TOKEN: wordpress
+    restart: always
