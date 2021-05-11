@@ -41,6 +41,9 @@ interface viteMaDoseData {
     }>
 }
 
+// avoid send twice the same message (using a specified ID)
+const alreadySend = new Set<string>();
+
 async function checkDepartment(department: number) {
     console.log(`fetching db ${department}...`);
     const {data}: { data: viteMaDoseData } =
@@ -62,6 +65,13 @@ async function checkDepartment(department: number) {
             if (nbDoses < MIN_DOSES) {
                 return;
             }
+
+            // don't send twice the same info
+            const id = `${centre.url} - ${centre.prochain_rdv} - ${nbDoses}`
+            if (alreadySend.has(id)) {
+                return;
+            }
+            alreadySend.add(id);
 
             const calendarDate = dayjs(centre.prochain_rdv).calendar(dayjs(), {
                 sameDay: '[aujourd\'hui à] H:mm', // The same day ( Today at 2:30 AM )
