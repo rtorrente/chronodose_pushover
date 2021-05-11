@@ -1,12 +1,12 @@
-# Chronodose twitter bot
+# Chronodose pushover bot
 
-This repository hosts https://twitter.com/chronodoseparis source code 
+This repository is a fork of https://github.com/PLhery/chronodose_twitterbot for pushover
 
 It leverages https://vitemadose.covidtracker.fr/ to find new available appointments in the "chronodose" section
 
 ## Installation
 
-Create a twitter app, and fill .env with the twitter credentials.
+Create a pushover app, and fill .env with the pushover credentials.
 
 You can also tweak some additional available options there.
 
